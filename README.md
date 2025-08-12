@@ -1,69 +1,31 @@
-# React + TypeScript + Vite
+# Desafio para Seleção Node + React Stefanini
+Este repositório contempla a solução frontend desenvolvida em React.
+Link para a página ([https://carlosfiuza.github.io/](https://CarlosFiuza.github.io/save-people-web))
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+O desafio consiste em:
+Criar uma aplicação para o cadastro de pessoas, composta por um back-end em
+Node e um front-end em React. A aplicação deve seguir as especificações
+abaixo:
 
-Currently, two official plugins are available:
+## Back-end
+Desenvolver uma API REST em Typescript + Nestjs que
+permita as seguintes operações:
+  1. Cadastro: Inserir novos registros de pessoas.
+  2. Alteração: Atualizar informações de registros existentes.
+  3. Remoção: Excluir registros de pessoas.
+  4. Consulta: Buscar registros de pessoas.
+  5. Informações a serem cadastradas:
+  6. Nome: obrigatório
+  7. Sexo: opcional
+  8. E-mail: opcional, mas deve ser validado se preenchido
+  9. Data de Nascimento: obrigatória, deve ser validada
+  10. Naturalidade: opcional
+  11. Nacionalidade: opcional
+  12. CPF: obrigatório, deve ser validado (formato correto e unicidade)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Observação: As datas de cadastro e atualização dos dados devem ser armazenadas.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Front-end
+O front-end deve ser desenvolvido utilizando React 17 ou superior e deve
+proporcionar uma interface amigável para o usuário realizar as operações
+de cadastro, alteração, remoção e consulta.
