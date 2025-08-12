@@ -1,4 +1,3 @@
-// src/types.ts
 export interface Address {
   street: string;
   city: string;
@@ -6,10 +5,24 @@ export interface Address {
   zipCode: string;
 }
 
+export type Gender = 'M' | 'F' | 'O';
+
+export const mapGender: Record<Gender, string> = {
+  'M': 'Masculino',
+  'F': 'Feminino',
+  'O': 'Outro',
+};
+
+export const formatAdress = (address?: Address) => {
+  if (!address) return '-'
+  
+  return `${address.street} - ${address.city} - ${address.state} - ${address.zipCode}`
+}
+
 export interface Person {
-  id?: string;
+  id?: number;
   name: string;
-  gender: 'M' | 'F' | 'O';
+  gender: Gender;
   email: string;
   dateOfBirth: string;
   nationality: string;
@@ -17,3 +30,6 @@ export interface Person {
   cpf: string;
   address: Address;
 }
+
+export const USER_KEY = 'user';
+export const TOKEN_KEY = 'token';

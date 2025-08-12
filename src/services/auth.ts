@@ -1,4 +1,5 @@
 // src/services/auth.ts
+import { TOKEN_KEY, USER_KEY } from '../types';
 import api from './api';
 import { AxiosError } from 'axios';
 
@@ -9,13 +10,11 @@ interface LoginParams {
 
 interface UserData {
   id: string;
-  name: string;
-  email: string;
 }
 
 interface AuthResponse {
-  token: string;
-  user: UserData;
+  access_token: string;
+  user_id: number;
 }
 
 export const authService = {
@@ -23,16 +22,12 @@ export const authService = {
     try {
       const response = await api.post<AuthResponse>('/auth/login', { username, password });
       
-      // Armazena os dados de autenticação
-      localStorage.setItem('token', response.data.token);
-      localStorage.setItem('user', JSON.stringify(response.data.user));
-      
-      console.log('heheheheeeeeeeeeeeeeeee')
+      localStorage.setItem(TOKEN_KEY, response.data.access_token);
+      localStorage.setItem(USER_KEY, JSON.stringify({ id: response.data.user_id }));
       return response.data;
     } catch (error) {
       const axiosError = error as AxiosError;
       
-      // Tratamento básico de erros
       if (axiosError.response?.status === 401) {
         throw new Error('username ou senha incorretos');
       }
@@ -42,22 +37,21 @@ export const authService = {
   },
 
   logout(): void {
-    // Remove todos os dados de autenticação
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
+    localStorage.removeItem(TOKEN_KEY);
+    localStorage.removeItem(USER_KEY);
   },
 
   getCurrentUser(): UserData | null {
-    const user = localStorage.getItem('user');
+    const user = localStorage.getItem(USER_KEY);
     return user ? JSON.parse(user) : null;
   },
 
   isAuthenticated(): boolean {
-    // Verificação simples baseada na presença do token
-    return !!localStorage.getItem('token');
+    const hasTokenInCache = !!localStorage.getItem(TOKEN_KEY);
+    return hasTokenInCache;
   },
 
   getAuthToken(): string | null {
-    return localStorage.getItem('token');
+    return localStorage.getItem(TOKEN_KEY);
   }
 };

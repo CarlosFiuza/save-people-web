@@ -1,7 +1,8 @@
 // src/components/PersonModal.tsx
-import { Dialog, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
 import { PersonForm } from './PersonForm';
+import type { Person } from '../types';
+import { Dialog, Transition } from '@headlessui/react';
 
 interface PersonModalProps {
   isOpen: boolean;
