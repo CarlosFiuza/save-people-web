@@ -1,9 +1,14 @@
-// src/services/api.ts
 import axios from 'axios';
 import { TOKEN_KEY } from '../types';
 
+const baseURL = (import.meta as any).env.VITE_API_BASE_URL;
+
+if (!baseURL) {
+  console.error('Variável de ambiente VITE_API_BASE_URL não definida!');
+}
+
 const api = axios.create({
-  baseURL: 'http://localhost:3000', // Altere para sua URL
+  baseURL,
 });
 
 api.interceptors.request.use((config) => {

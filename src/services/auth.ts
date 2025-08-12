@@ -1,4 +1,3 @@
-// src/services/auth.ts
 import { TOKEN_KEY, USER_KEY } from '../types';
 import api from './api';
 import { AxiosError } from 'axios';

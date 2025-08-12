@@ -1,8 +1,8 @@
 // src/components/PersonForm.tsx
 import { useForm } from 'react-hook-form';
-import type { Person } from '../types';
 import { useEffect } from 'react';
-import CpfInput from './CpfInput';
+import type { Person } from '../../types';
+import CpfInput from '../CpfInput';
 
 interface PersonFormProps {
   initialData?: Person;
@@ -26,12 +26,6 @@ export const PersonForm = ({
       nationality: '',
       naturalness: '',
       cpf: '',
-      address: {
-        street: '',
-        city: '',
-        state: '',
-        zipCode: ''
-      }
     }
   });
 
@@ -54,7 +48,7 @@ export const PersonForm = ({
           {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>}
         </div>
 
-        <CpfInput 
+        <CpfInput<Person> 
           register={register}
           error={errors.cpf}
         />
@@ -114,47 +108,6 @@ export const PersonForm = ({
             {...register('naturalness')}
             className="mt-1 block text-gray-800 w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
           />
-        </div>
-      </div>
-
-      {/* Seção de Endereço */}
-      <div className="bg-gray-100 p-4 rounded-lg">
-        <h3 className="text-md text-gray-800 font-medium mb-2">Endereço</h3>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          {/* Rua */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Rua</label>
-            <input
-              {...register('address.street')}
-              className="mt-1 block text-gray-800 w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Cidade</label>
-            <input
-              {...register('address.city')}
-              className="mt-1 block text-gray-800 w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Estado</label>
-            <input
-              {...register('address.state')}
-              className="mt-1 block text-gray-800 w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Código Postal</label>
-            <input
-              {...register('address.zipCode')}
-              className="mt-1 block text-gray-800 w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-            />
-          </div>
-          
-          {/* Outros campos de endereço... */}
         </div>
       </div>
 

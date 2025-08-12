@@ -1,5 +1,3 @@
-// src/components/Header.tsx
-
 import { useAuth } from "../hooks/useAuth";
 
 export const Header = () => {

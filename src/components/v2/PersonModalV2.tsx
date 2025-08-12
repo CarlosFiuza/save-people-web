@@ -1,24 +1,24 @@
 // src/components/PersonModal.tsx
 import { Fragment } from 'react';
-import { PersonForm } from './PersonForm';
-import type { Person } from '../types';
+import type { PersonV2 } from '../../types';
 import { Dialog, Transition } from '@headlessui/react';
+import { PersonFormV2 } from './PersonFormV2';
 
-interface PersonModalProps {
+interface PersonModalV2Props {
   isOpen: boolean;
   onClose: () => void;
-  onSave: (data: Person) => void;
-  initialData?: Person;
+  onSave: (data: PersonV2) => void;
+  initialData?: PersonV2;
   isLoading?: boolean;
 }
 
-export const PersonModal = ({ 
+export const PersonModalV2 = ({ 
   isOpen, 
   onClose, 
   onSave, 
   initialData, 
   isLoading 
-}: PersonModalProps) => {
+}: PersonModalV2Props) => {
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-50" onClose={onClose}>
@@ -54,7 +54,7 @@ export const PersonModal = ({
                 </Dialog.Title>
                 
                 <div className="mt-4">
-                  <PersonForm
+                  <PersonFormV2
                     initialData={initialData}
                     onSubmit={onSave}
                     onCancel={onClose}

@@ -1,10 +1,10 @@
-// src/App.tsx
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import Login from './pages/Login';
 import { AuthProvider } from './contexts/AuthProvider';
-import PersonsDashboard from './pages/PersonDashboard';
 import { ToastContainer } from 'react-toastify';
+import PersonsDashboard from './pages/v1/PersonDashboard';
+import PersonsDashboardV2 from './pages/v2/PersonDashboardV2';
 
 export default function App() {
   return (
@@ -15,7 +15,7 @@ export default function App() {
         {/* Rotas protegidas */}
         <Route element={<ProtectedRoute />}>
           <Route path="/dashboard" element={<PersonsDashboard />} />
-          {/* Adicione outras rotas protegidas aqui */}
+          <Route path="/v2/dashboard" element={<PersonsDashboardV2 />} />
         </Route>
 
         {/* Redirecionamento padrão */}

@@ -28,6 +28,9 @@ export interface Person {
   nationality: string;
   naturalness: string;
   cpf: string;
+}
+
+export interface PersonV2 extends Person {
   address: Address;
 }
 

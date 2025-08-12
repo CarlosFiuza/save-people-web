@@ -1,17 +1,13 @@
 import type { ChangeEvent } from "react";
-import type { FieldError, UseFormRegister } from "react-hook-form";
-import type { Person } from "../types";
+import type { FieldError, FieldValues, Path, UseFormRegister } from "react-hook-form";
 
-interface CpfInputProps {
-  register: UseFormRegister<Person>;
-  required?: boolean | string;
+interface CpfInputProps<T extends FieldValues> {
+  register: UseFormRegister<T>;
   error?: FieldError;
 }
 
-const CpfInput: React.FC<CpfInputProps> = ({ 
-  register, 
-  error 
-}) => {
+function CpfInput<T extends FieldValues>(props: CpfInputProps<T >) {
+  const { register, error } = props;
   const formatCpf = (value: string): string => {
     // Remove tudo que não é dígito
     let formatted = value.replace(/\D/g, '');
@@ -42,7 +38,7 @@ const CpfInput: React.FC<CpfInputProps> = ({
         CPF*
       </label>
       <input
-        {...register('cpf', { 
+        {...register('cpf' as Path<T>, { 
           required: 'Campo obrigatório',
         })}
         onChange={handleChange}

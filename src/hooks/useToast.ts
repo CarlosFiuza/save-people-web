@@ -1,4 +1,3 @@
-// src/hooks/useToast.ts
 import { toast, type ToastOptions } from 'react-toastify';
 
 const useToast = () => {
