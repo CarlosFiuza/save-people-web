@@ -1,6 +1,9 @@
 # Desafio para Seleção Node + React Stefanini
 Este repositório contempla a solução frontend desenvolvida em React.
-Link para a página ([https://carlosfiuza.github.io/](https://CarlosFiuza.github.io/save-people-web))
+
+Link para a página ([https://carlosfiuza.github.io/](https://CarlosFiuza.github.io/save-people-web)).
+
+Link para o repositório com o backend (https://github.com/CarlosFiuza/save-people)
 
 O desafio consiste em:
 Criar uma aplicação para o cadastro de pessoas, composta por um back-end em
